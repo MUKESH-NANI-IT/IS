@@ -1,10 +1,10 @@
 
 //Exp3(b)
 import java.io.*;
-imprt java.util.*;
+import java.util.*;
 public class SubstitutionCipher
 {
- static Scanner sc=new scanner(System.in);
+ static Scanner sc=new Scanner(System.in);
 static BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 public static void main(String args[])throws IOException
 {

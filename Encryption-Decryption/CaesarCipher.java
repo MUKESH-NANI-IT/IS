@@ -34,28 +34,29 @@ public class CaesarCipher
     }
     public static void main(String[] args)
     {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter the message to be encrypted: ");
-        String message = sc.nextLine();
-        String messageLower = message.toLowerCase();
-        System.out.println("Enter the Encryption key: ");
-        int ekey = sc.nextInt();
-        String encrypted = encrypt(messageLower, ekey);
-        System.out.println("Encrypted message: " + encrypted);
-        System.out.println("Enter the Decryption key: ");
-        int dkey = sc.nextInt();
-        if (dkey == ekey)
-        {
-            String decrypted = decrypt(encrypted, dkey);
-
-            if(decrypted.equals(messageLower))
+        try (Scanner sc = new Scanner(System.in)) {
+            System.out.println("Enter the message to be encrypted: ");
+            String message = sc.nextLine();
+            String messageLower = message.toLowerCase();
+            System.out.println("Enter the Encryption key: ");
+            int ekey = sc.nextInt();
+            String encrypted = encrypt(messageLower, ekey);
+            System.out.println("Encrypted message: " + encrypted);
+            System.out.println("Enter the Decryption key: ");
+            int dkey = sc.nextInt();
+            if (dkey == ekey)
             {
-                System.out.println("Decrypted message: " + message);
+                String decrypted = decrypt(encrypted, dkey);
+
+                if(decrypted.equals(messageLower))
+                {
+                    System.out.println("Decrypted message: " + message);
+                }
             }
-        }
-        else
-        {
-            System.out.println("Invalid Decryption key");
+            else
+            {
+                System.out.println("Invalid Decryption key");
+            }
         }
     }
 }
