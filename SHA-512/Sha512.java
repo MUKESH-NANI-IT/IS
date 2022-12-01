@@ -33,6 +33,7 @@ public class Sha512 {
         System.out.print("Enter String 2 : ");
         String s2 = input.nextLine();
         System.out.println("\n" + s2 + " : " + encryptThisString(s2));
+        input.close();
     }
 }
 
