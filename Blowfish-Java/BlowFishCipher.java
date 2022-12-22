@@ -1,26 +1,28 @@
-class BlowFishCipher{
+import javax.crypto.Cipher;
+import javax.crypto.KeyGenerator;
+import javax.crypto.SecretKey;
+import javax.swing.JOptionPane;
 
-     public static int minimal(int input1, int[] input2) {
-          int sum = 0;
-          for (int i = 0; i < input1; i++) {
-               for (int j = i + 1; j < input1; j++) {
-                    if (input2[i] == input2[j]) {
-                         int[] count = new int[] { input2[i] };
-                         input2[i] = input2[i] + count[0];
-                    }
-               }
-          }
+public class BlowFishCipher {
 
-          for (int i = 0; i < input1; i++) {
-               sum = sum + input2[i];
-          }
-          return sum;
-     }
+  public static void main(String[] args) throws Exception {
+    KeyGenerator keygenerator = KeyGenerator.getInstance("Blowfish");
 
-     public static void main(String[] args) throws Exception {
-          int n = 5;
-          int[] arr = new int[] { 1, 4, 5, 4, 5 };
-          int result = minimal(n, arr);
-          System.out.println(result);
-     }
+    SecretKey secretkey = keygenerator.generateKey();
+
+    Cipher cipher = Cipher.getInstance("Blowfish");
+
+    cipher.init(Cipher.ENCRYPT_MODE, secretkey);
+
+    String inputText = "Hello world";
+
+    byte[] encrypted = cipher.doFinal(inputText.getBytes());
+
+    cipher.init(Cipher.DECRYPT_MODE, secretkey);
+
+    byte[] decrypted = cipher.doFinal(encrypted);
+    System.out.println("Original String: " + inputText);
+    System.out.println("Encrypted: " + new String(encrypted));
+    System.out.println("Decrypted: " + new String(decrypted));
+  }
 }
